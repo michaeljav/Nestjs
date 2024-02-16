@@ -24,7 +24,6 @@ export class TaskService {
       data: data,
     });
   }
-
   async updateTask(id: number, data: Task): Promise<Task> {
     return this.prisma.task.update({
       where: {
@@ -33,7 +32,7 @@ export class TaskService {
       data: data,
     });
   }
-  async delete(id: number): Promise<Task> {
+  async deleteTask(id: number): Promise<Task> {
     return this.prisma.task.delete({
       where: {
         id: id,

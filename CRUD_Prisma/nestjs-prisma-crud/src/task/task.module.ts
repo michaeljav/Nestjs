@@ -7,6 +7,6 @@ import { PrismaModule } from 'src/prisma/prisma.module';
 @Module({
   controllers: [TaskController],
   providers: [TaskService],
-  imports: [PrismaModule], // importando
+  imports: [PrismaModule], // importando toda la carpeta de Prisma
 })
 export class TaskModule {}
