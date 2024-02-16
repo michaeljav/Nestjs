@@ -1,5 +1,9 @@
 DTO 
 ORM prisma
+Tres partes principales:
+1.Pristma/client: un modelo de node  que te permite crear operaciones en tablas, como create, delte, up en producion.
+2.npx prisma migrate:  forma facil de alterar nuestra base de datos.
+3.npx prisma studio: interface grafica de usuario basada en la web que permite poder editar nuestros datos 
 
 debo de tener node.js
 debo tener  Nest CLI global
@@ -19,7 +23,7 @@ installar los modelos de prisma
 inicializar la configuracion de prisma:
 	
 	npx prisma init   : configura el orm  para que trabaje con postgresql, pero  para un ejemplo simple estaresmo usarndo :
-        npx prisma init --datasource-provider sqlite   :  pero vamos usar la db de sqlite
+        npx prisma init --datasource-provider sqlite   :  para  usar la db de sqlite por defecto
 
 para convertir un modelo en tabla en prisma:
 	npx prisma migrate dev --name init         //init es el nombre de la carpta de migarcion que se creara  y se crea la base de datos. 
