@@ -6,7 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  // provider = "sqlite"
+  provider = "postgresql" //si quiero usar postgresql
   url      = env("DATABASE_URL")
 }
 
@@ -14,4 +15,5 @@ model Task {
   id Int @id @default(autoincrement())
   title String
   description String?
+  
 }
