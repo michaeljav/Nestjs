@@ -10,6 +10,12 @@
     - [Install](#install)
     - [Verify version](#verify-version)
     - [Creating a project via the nest CLI](#creating-a-project-via-the-nest-cli)
+    - [module](#module)
+      - [providers](#providers)
+      - [controllers:](#controllers)
+      - [exports](#exports)
+      - [imports](#imports)
+    - [Create Module](#create-module)
 
 # Nest
 
@@ -87,3 +93,33 @@
 ### Creating a project via the nest CLI
 
 `nest new <name of project>`
+
+###run project
+`pnpm  start:dev`
+`pnpm run start:dev`
+
+### module
+
+is defined by annotationg a class with the @Module decorator
+
+#### providers
+
+array of providers to be available within the module via dependency injection
+
+#### controllers:
+
+array of controllers to be instantiated withing the module
+
+#### exports
+
+array of providers to export to other modules
+
+#### imports
+
+List of modules required by this module.
+any exported provider by this modules will now be avaiblable in our module via dependency injection.
+
+### Create Module
+
+`nest g module tasks`
+g:is generate
