@@ -1,0 +1,17 @@
+
+Generating project with the nest cli
+validation request data with pipes
+inversion of control
+Dependency injection
+DECORATOR
+Modules
+typeorm
+sERIALIZATION IN THE INTERCEPTORS
+DTO
+PASSPORT,
+GUARD,
+STRATEGIES
+CRON : EJECUTAR CIERTAS TAREA CADA X TIEMPO = TASK SCHEDULER
+
+
+
