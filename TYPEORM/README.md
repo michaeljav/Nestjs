@@ -23,6 +23,7 @@
   - [using uuid](#using-uuid)
   - [Pipes](#pipes)
     - [Validation Pipe](#validation-pipe)
+    - [adding TypeORM with PostgreSQL pg](#adding-typeorm-with-postgresql--pg)
 
 # Nest
 
@@ -170,3 +171,7 @@ g:is generate
 ### Validation Pipe
 
 `pnpm i class-validator class-transformer --save`
+
+### adding TypeORM with PostgreSQL pg
+
+`pnpm install @nestjs/typeorm typeorm pg`
