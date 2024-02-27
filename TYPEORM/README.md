@@ -16,6 +16,9 @@
       - [exports](#exports)
       - [imports](#imports)
     - [Create Module](#create-module)
+    - [Controllers](#controllers-1)
+    - [Providers](#providers-1)
+    - [Service](#service)
 
 # Nest
 
@@ -127,3 +130,21 @@ g:is generate
 ### Controllers
 
 `nest g controller tasks --no-spec`
+
+### Providers
+
+- can be injected into contructors if decorated as an @Injectable, via dependecy injection.
+- Can be plain value, a class, sync/async factory etc.
+- Providers must be provided to a module for them to be usable.
+- Cna be exported from a module - and then be available to other modules that import it.
+
+### Service
+
+- Defined as providers. _NOT ALL PROVIDERS ARE SERVICES_
+- common concept within software development and are not exclusive NESTJS, Javascript or backend development.
+- Singlenton when wrapped with @Injectable() and provided to a module. That means, the same instance will be shared across the application - acting as a single source of trueth.
+- the main source of business logic. For example , a service will be called from a controller to validate data, create an item in the database aand return a response.
+
+## create service
+
+`nest g service tasks --no-spec`
