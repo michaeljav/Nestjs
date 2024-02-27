@@ -21,6 +21,8 @@
     - [Service](#service)
   - [create service](#create-service)
   - [using uuid](#using-uuid)
+  - [Pipes](#pipes)
+    - [Validation Pipe](#validation-pipe)
 
 # Nest
 
@@ -154,3 +156,17 @@ g:is generate
 ## using uuid
 
 `pnpm i --save uuid`
+
+## Pipes
+
+- Pipes operate on the arguments to be processed by the route handler, just before the handler is called.
+- Pipes can perform data transformation or data validation
+- ValidationPipe
+- ParseIntPipe
+  - Parameter-level pipes
+  - Handle- level pipes
+  - Global
+
+### Validation Pipe
+
+`pnpm i class-validator class-transformer --save`
