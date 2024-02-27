@@ -19,6 +19,8 @@
     - [Controllers](#controllers-1)
     - [Providers](#providers-1)
     - [Service](#service)
+  - [create service](#create-service)
+  - [using uuid](#using-uuid)
 
 # Nest
 
@@ -148,3 +150,7 @@ g:is generate
 ## create service
 
 `nest g service tasks --no-spec`
+
+## using uuid
+
+`pnpm i --save uuid`
