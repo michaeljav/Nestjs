@@ -123,3 +123,7 @@ any exported provider by this modules will now be avaiblable in our module via d
 
 `nest g module tasks`
 g:is generate
+
+### Controllers
+
+`nest g controller tasks --no-spec`
