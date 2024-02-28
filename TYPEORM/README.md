@@ -23,8 +23,9 @@
   - [using uuid](#using-uuid)
   - [Pipes](#pipes)
     - [Validation Pipe](#validation-pipe)
-    - [adding TypeORM with PostgreSQL pg lo desintale](#adding-typeorm-with-postgresql-pg--lo-desintale)
+    - [adding TypeORM with PostgreSQL pg lo desintale](#adding-typeorm-with-postgresql-pg-lo-desintale)
     - [INSTALLE MYSQL](#installe-mysql)
+    - [JWT](#jwt)
 
 # Nest
 
@@ -180,3 +181,10 @@ g:is generate
 ### INSTALLE MYSQL
 
 `pnpm install --save @nestjs/typeorm typeorm mysql2`
+
+### JWT
+
+- passport.js: which is an authentication middleware for node.js.
+  - Passport.js supports muiltiple strategies and one of them is the GeneralT Token startegy
+
+`pnpm install @nestjs/jwt @nestjs/passport passport passport-jwt`
