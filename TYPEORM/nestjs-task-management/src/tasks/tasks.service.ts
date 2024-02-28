@@ -20,6 +20,25 @@ export class TasksService {
   //   @InjectRepository(TaskRepository) private taskRepository: TaskRepository,
   // ) {}
   // private tasks: Task[] = [];
+
+  async getTasks(filterDto: GetTasksFilterDto): Promise<TaskEntity[]> {
+    const { status, search } = filterDto;
+    // const query = this.taskRepository.createQueryBuilder('task');
+    const query = this.taskRepository.createQueryBuilder('task');
+
+    if (status) {
+      query.andWhere('task.status = :status', { status });
+    }
+    if (search) {
+      query.andWhere(
+        '(task.title LIKE :search OR task.description LIKE :search)',
+        { search: `%${search}%` },
+      );
+    }
+    const tasks = await query.getMany();
+    return tasks;
+  }
+
   async getAllTasks(): Promise<TaskEntity[]> {
     // this.createTask('title', 'escription');
     return await this.taskRepository.find();
