@@ -23,7 +23,8 @@
   - [using uuid](#using-uuid)
   - [Pipes](#pipes)
     - [Validation Pipe](#validation-pipe)
-    - [adding TypeORM with PostgreSQL pg](#adding-typeorm-with-postgresql--pg)
+    - [adding TypeORM with PostgreSQL pg lo desintale](#adding-typeorm-with-postgresql-pg--lo-desintale)
+    - [INSTALLE MYSQL](#installe-mysql)
 
 # Nest
 
@@ -172,6 +173,10 @@ g:is generate
 
 `pnpm i class-validator class-transformer --save`
 
-### adding TypeORM with PostgreSQL pg
+### adding TypeORM with PostgreSQL pg lo desintale
 
 `pnpm install @nestjs/typeorm typeorm pg`
+
+### INSTALLE MYSQL
+
+`pnpm install --save @nestjs/typeorm typeorm mysql2`
