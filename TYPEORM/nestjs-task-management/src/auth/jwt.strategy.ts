@@ -5,7 +5,9 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 import { UserEntity } from './entity/user.entity';
 import { JwtPayload } from './interface/jwt-payload.interface';
 import { Repository } from 'typeorm';
+import * as config from 'config';
 
+const jwtConfig = config.get('jwt');
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -14,7 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'topSecret51',
+      secretOrKey: process.env.JWT_SECRET || jwtConfig.secret,
     });
   }
 

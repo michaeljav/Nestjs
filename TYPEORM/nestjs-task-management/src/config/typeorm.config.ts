@@ -1,15 +1,20 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
+import * as config from 'config';
+
+const dbConfig = config.get('db');
 export const typeOrmConfig: TypeOrmModuleOptions = {
-  type: 'mysql',
-  host: 'localhost',
-  port: 3307,
-  username: 'root',
-  password: '12345678',
-  database: 'taskdb',
-  // entities: [__dirname + '/../**/*.entity.ts'],
-  entities: [`${__dirname}/**/*.entity{.ts,.js}`], //no working
-  autoLoadEntities: true,
-  synchronize: true,
+  type: dbConfig.type,
+  host: process.env.RDS_HOSTNAME || dbConfig.host,
+  port: process.env.RDS_PORT || dbConfig.port,
+  username: process.env.RDS_USERNAME || dbConfig.username,
+  password: process.env.RDS_PASSWORD || dbConfig.password,
+  database: process.env.RDS_DB_NAME || dbConfig.database,
+  // entities: [__dirname + '/../**/*.entity.ts'], //no working
+  // entities: [`${__dirname}/**/*.entity{.ts,.js}`], //no working
+  entities: [`${__dirname}/../**/*.entity{.ts,.js}`], //yes
+  // autoLoadEntities: true,
+  synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
+  // synchronize: true,
 };
 console.log('michael ', [__dirname + '/../**/*.entity.ts'], [__dirname]);
