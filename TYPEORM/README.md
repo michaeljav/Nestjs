@@ -29,6 +29,7 @@
     - [list of types of logs with brief descriptions:](#list-of-types-of-logs-with-brief-descriptions)
     - [Three environment](#three-environment)
     - [Log levels](#log-levels)
+    - [Configuration](#configuration)
 
 # Nest
 
@@ -219,3 +220,11 @@ g:is generate
 | Critical  | Yes         | Yes     | Yes        |
 | Audit     | Yes         | Yes     | Yes        |
 | Verbose   | Yes         | No      | No         |
+
+## Configuration
+
+- Environment Variables: Load configuration based on the environment using environment variables.
+- Configuration Files: Load configuration from JSON, YAML, or other files using ConfigModule.
+- Third-party Libraries: Integrate with libraries like dotenv for environment variables and config for advanced configuration management.
+
+`pnpm install config`
