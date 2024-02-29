@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { InsertResult, Repository } from 'typeorm';
 // import { TaskRepository } from './entities/task.repository';
 import { TaskEntity } from './entities/task.entity';
 import { TaskStatus } from './task-status.enum';
@@ -81,30 +81,26 @@ export class TasksService {
   ): Promise<TaskEntity> {
     const { title, description } = createTaskDto;
     const task = new TaskEntity();
-    // const task: TaskEntity = {
-    //   // id: uuid(),
-    //   // id: -1,
-    //   // id: ,
-    //   title,
-    //   description,
-    //   status: TaskStatus.OPEN,
-    //   user,
-    // };
     task.title = title;
     task.description = description;
     task.status = TaskStatus.OPEN;
     task.user = user;
-    const saved: TaskEntity = await this.taskRepository.save({ ...task });
-    // const saved:TaskEntity = await this.taskRepository.insert({ ...task });
-
+    const saved: TaskEntity = await this.taskRepository.save({ ...task }); //insert or update
+    // const saved: InsertResult = await this.taskRepository.insert({ ...task }); //just to insert
+    // console.log(saved);
+    // return new Promise(() => {});
     //delete the user before sending back to the client
     delete saved.user;
     return saved;
   }
 
-  async deleteTask(id: number): Promise<boolean> {
-    const result = await this.taskRepository.delete(id);
-    return result.affected > 0;
+  async deleteTask(id: number, user: UserEntity): Promise<{ result: boolean }> {
+    const result = await this.taskRepository.delete({ id, userId: user.id });
+
+    if (result.affected === 0) {
+      throw new NotFoundException(`Task ${id} not found`);
+    }
+    return { result: result.affected > 0 };
   }
   async updateTaskStatus(
     id: number,
