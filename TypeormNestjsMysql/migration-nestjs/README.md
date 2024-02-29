@@ -80,7 +80,7 @@ Nest is [MIT licensed](LICENSE).
 
 # migraciones typeorm
 
-`pnpm install @nestjs/typeorm`
+`pnpm install @nestjs/typeorm typeorm`
 
 # para usar diferentes archivos env
 
@@ -89,3 +89,17 @@ Nest is [MIT licensed](LICENSE).
 # Mysql2 install
 
 `pnpm install --save mysql2`
+
+#
+
+# Para crear una entidad. Cuando creo recurso se genera la carpeta de user, dto, entities
+
+`nest g resource user`
+
+Me pide elegir y elegi api
+
+- REST API
+- GraphQL (code first)
+- GraphQL (schema first)
+- Microservice (non-HTTP)
+- WebSockets
