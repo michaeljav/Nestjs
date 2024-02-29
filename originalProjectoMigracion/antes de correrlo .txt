@@ -1,0 +1,10 @@
+usa npm
+se debe crear manualmente la base de datos.
+
+
+revert una especifica  migracion:?
+
+
+ESTE PROJECTO FUNCIONA. 
+https://www.youtube.com/watch?v=YVR82fj3pyU&ab_channel=NeiderRuiz
+https://github.com/neiderruiz/nestjs-migrations

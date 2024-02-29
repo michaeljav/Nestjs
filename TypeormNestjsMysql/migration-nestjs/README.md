@@ -85,6 +85,7 @@ Nest is [MIT licensed](LICENSE).
 # para usar diferentes archivos env
 
 `pnpm install cross-env -D`
+`pnpm install dotenv`
 
 # Mysql2 install
 
