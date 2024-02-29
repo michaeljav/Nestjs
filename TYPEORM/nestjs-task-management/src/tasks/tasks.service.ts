@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 // import * as uuid from 'uuid/v1';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
@@ -11,6 +16,7 @@ import { UserEntity } from 'src/auth/entity/user.entity';
 
 @Injectable()
 export class TasksService {
+  private logger = new Logger('TasksService');
   constructor(
     @InjectRepository(TaskEntity)
     private readonly taskRepository: Repository<TaskEntity>,
@@ -40,8 +46,17 @@ export class TasksService {
         { search: `%${search}%` },
       );
     }
-    const tasks = await query.getMany();
-    return tasks;
+
+    try {
+      const tasks = await query.getMany();
+      return tasks;
+    } catch (error) {
+      this.logger.error(
+        `Failed to get tasks for user "${user.username}". Filter:${JSON.stringify(filterDto)}`,
+        error.stack,
+      );
+      throw new InternalServerErrorException();
+    }
   }
 
   async getAllTasks(): Promise<TaskEntity[]> {
@@ -85,13 +100,22 @@ export class TasksService {
     task.description = description;
     task.status = TaskStatus.OPEN;
     task.user = user;
-    const saved: TaskEntity = await this.taskRepository.save({ ...task }); //insert or update
-    // const saved: InsertResult = await this.taskRepository.insert({ ...task }); //just to insert
-    // console.log(saved);
-    // return new Promise(() => {});
-    //delete the user before sending back to the client
-    delete saved.user;
-    return saved;
+
+    try {
+      const saved: TaskEntity = await this.taskRepository.save({ ...task }); //insert or update
+      // const saved: InsertResult = await this.taskRepository.insert({ ...task }); //just to insert
+      // console.log(saved);
+      // return new Promise(() => {});
+      //delete the user before sending back to the client
+      delete saved.user;
+      return saved;
+    } catch (error) {
+      this.logger.error(
+        `Failed to create task for user "${user.username}". Data:${JSON.stringify(createTaskDto)}`,
+        error.stack,
+      );
+      throw new InternalServerErrorException();
+    }
   }
 
   async deleteTask(id: number, user: UserEntity): Promise<{ result: boolean }> {
