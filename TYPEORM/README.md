@@ -29,7 +29,8 @@
     - [list of types of logs with brief descriptions:](#list-of-types-of-logs-with-brief-descriptions)
     - [Three environment](#three-environment)
     - [Log levels](#log-levels)
-    - [Configuration](#configuration)
+  - [Configuration](#configuration)
+    - [Migrations typeorm](#migrations-typeorm)
 
 # Nest
 
@@ -228,3 +229,23 @@ g:is generate
 - Third-party Libraries: Integrate with libraries like dotenv for environment variables and config for advanced configuration management.
 
 `pnpm install config`
+
+### Migrations typeorm
+
+"mig:gen": "pnpm run typeorm -- migration:generate " //no lo estoy usando
+
+- in the TypeOrmModuleOptions : SET SYNCHRONIZE: FALSE
+- add key:value migrations:[join(__dirname,'../**/*.migrations/*{.ts,js}')]
+- ts-node : lo uso
+- "typeorm": "typeorm-ts-node-esm -d dis/migrations/typeorm.config.js",
+- "typeorm":"typeorm-ts-node-esm -d ./src/config/data.source.ts" //default no usado
+- "typeorm":"typeorm-ts-node-esm -d ./src/config/typeorm.config.ts" //used saber la car
+  - key:value
+  - the esm: para importacion por modul
+- "mig:gen":"pnpm run typeorm migration:generate ./src/migrations/$npm_config_name"
+  - el directorio donde se guardara la migreacion.
+- "mig:run":"pnpm run typeorm migration:run"
+- add to the entity the column to migrate for test
+- to run the migration
+  - pnpm run mig:gen --name=MyMigration
+- -"typeorm": "pnpm run build && typeorm-ts-node-esm -d dist/migrations/typeorm.config.js",
