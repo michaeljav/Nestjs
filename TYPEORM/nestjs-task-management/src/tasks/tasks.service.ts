@@ -106,9 +106,13 @@ export class TasksService {
     const result = await this.taskRepository.delete(id);
     return result.affected > 0;
   }
-  async updateTaskStatus(id: number, status: TaskStatus): Promise<TaskEntity> {
+  async updateTaskStatus(
+    id: number,
+    status: TaskStatus,
+    user: UserEntity,
+  ): Promise<TaskEntity> {
     const found: TaskEntity = await this.taskRepository.findOne({
-      where: { id: id },
+      where: { id: id, userId: user.id },
     });
     if (found) {
       found.status = status;
