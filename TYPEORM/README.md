@@ -26,6 +26,9 @@
     - [adding TypeORM with PostgreSQL pg lo desintale](#adding-typeorm-with-postgresql-pg-lo-desintale)
     - [INSTALLE MYSQL](#installe-mysql)
     - [JWT](#jwt)
+    - [list of types of logs with brief descriptions:](#list-of-types-of-logs-with-brief-descriptions)
+    - [Three environment](#three-environment)
+    - [Log levels](#log-levels)
 
 # Nest
 
@@ -188,3 +191,31 @@ g:is generate
   - Passport.js supports muiltiple strategies and one of them is the GeneralT Token startegy
 
 `pnpm install @nestjs/jwt @nestjs/passport passport passport-jwt`
+
+### list of types of logs with brief descriptions:
+
+- Debug Logs: Detailed information for debugging purposes, such as variable values and function calls.
+- Info Logs: General information about the application's operation and flow.
+- Warning Logs: Alerts for potential issues or anomalies that require attention.
+- Error Logs: Indicate unexpected conditions or errors that need to be addressed.
+- Critical Logs: Notify about severe errors or issues requiring immediate attention.
+- Audit Logs: Track and record user or process actions for security and compliance.
+- Verbose Logs: Provide extensive and detailed information about the application's operation.
+
+### Three environment
+
+- Development
+- Staging
+- Production
+
+### Log levels
+
+| Log Level | Development | Staging | Production |
+| --------- | ----------- | ------- | ---------- |
+| Debug     | Yes         | Yes     | No         |
+| Info      | Yes         | Yes     | Yes        |
+| Warning   | Yes         | Yes     | Yes        |
+| Error     | Yes         | Yes     | Yes        |
+| Critical  | Yes         | Yes     | Yes        |
+| Audit     | Yes         | Yes     | Yes        |
+| Verbose   | Yes         | No      | No         |
