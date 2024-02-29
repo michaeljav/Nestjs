@@ -60,9 +60,11 @@ export class TasksService {
     return tasks;
   }
 
-  async getTaskById(id: number): Promise<TaskEntity> {
+  async getTaskById(id: number, user: UserEntity): Promise<TaskEntity> {
     // const found = await this.taskRepository.findOne(id);
-    const found = await this.taskRepository.findOne({ where: { id: id } });
+    const found = await this.taskRepository.findOne({
+      where: { id: id, userId: user.id },
+    });
     // const found = new Promise<TaskEntity>((resolve, reject) => {
     //   return resolve({ id: 4, description: 'Descri' } as TaskEntity);
     // });
