@@ -9,6 +9,9 @@ async function bootstrap() {
   const logger = new Logger('bootstrap');
 
   const app = await NestFactory.create(AppModule);
+  if (process.env.NODE_ENV === 'development') {
+    app.enableCors();
+  }
 
   console.log(serverConfig);
 
