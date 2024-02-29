@@ -15,9 +15,9 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.RDS_DB_NAME || dbConfig.database,
   // entities: [__dirname + '/../**/*.entity.ts'], //no working
   // entities: [`${__dirname}/**/*.entity{.ts,.js}`], //no working
-  // entities: [`${__dirname}/../**/*.entity{.ts,.js}`], //yes
+  entities: [`${__dirname}/../**/*.entity{.ts,.js}`], //yes
   // entities: [`src/**/entities/*.entity.{ts,js}`], //yes testing
-  entities: [`src/**/*.entity.{ts,js}`], //yes testing
+  // entities: [`src/**/*.entity.{ts,js}`], //yes testing
   //aternative
   // autoLoadEntities: true,
   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
@@ -30,9 +30,9 @@ export const dataSourceOptions: DataSourceOptions = {
   // migrations: ['dist/migrations/*{.ts,.js}'],
   // migrations: [__dirname + '/../migrations/**/*{.ts,.js}'],
   // migrations: ['src/**/migrations/*{.ts,.js}'],//testing
-  migrations: ['src/db/migrations/*.ts'],
-  migrationsRun: true,
-  logging: true,
+  // migrations: ['src/db/migrations/*.ts'],
+  // migrationsRun: true,
+  // logging: true,
 };
 // console.log('michael ', [__dirname + '/../**/*.entity.ts'], [__dirname]);
 // /../ son para subir o salir de la carpeta actual
