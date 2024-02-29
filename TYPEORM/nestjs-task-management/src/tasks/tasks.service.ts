@@ -22,10 +22,14 @@ export class TasksService {
   // ) {}
   // private tasks: Task[] = [];
 
-  async getTasks(filterDto: GetTasksFilterDto): Promise<TaskEntity[]> {
+  async getTasks(
+    filterDto: GetTasksFilterDto,
+    user: UserEntity,
+  ): Promise<TaskEntity[]> {
     const { status, search } = filterDto;
-    // const query = this.taskRepository.createQueryBuilder('task');
     const query = this.taskRepository.createQueryBuilder('task');
+
+    query.where('task.userId = :userId', { userId: user.id });
 
     if (status) {
       query.andWhere('task.status = :status', { status });
@@ -74,15 +78,20 @@ export class TasksService {
     user: UserEntity,
   ): Promise<TaskEntity> {
     const { title, description } = createTaskDto;
-    const task: TaskEntity = {
-      // id: uuid(),
-      // id: -1,
-      // id: ,
-      title,
-      description,
-      status: TaskStatus.OPEN,
-      user,
-    };
+    const task = new TaskEntity();
+    // const task: TaskEntity = {
+    //   // id: uuid(),
+    //   // id: -1,
+    //   // id: ,
+    //   title,
+    //   description,
+    //   status: TaskStatus.OPEN,
+    //   user,
+    // };
+    task.title = title;
+    task.description = description;
+    task.status = TaskStatus.OPEN;
+    task.user = user;
     const saved: TaskEntity = await this.taskRepository.save({ ...task });
     // const saved:TaskEntity = await this.taskRepository.insert({ ...task });
 

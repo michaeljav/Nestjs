@@ -27,17 +27,13 @@ import { GetUser } from 'src/auth/get-user.decorator';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
   @Get()
-  getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto) {
+  getTasks(
+    @Query(ValidationPipe) filterDto: GetTasksFilterDto,
+    @GetUser() user: UserEntity,
+  ) {
     // : Promise<TaskEntity[]> {
 
-    return this.tasksService.getTasks(filterDto);
-
-    // if (Object.keys(filterDto).length) {
-    //   return this.tasksService.getTasksWithFilteres(filterDto);
-    // } else {
-    //   return this.tasksService.getAllTasks();
-    // }
-    console.log(filterDto);
+    return this.tasksService.getTasks(filterDto, user);
   }
 
   @Get('/:id')
