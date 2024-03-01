@@ -34,6 +34,7 @@
   - [create migration](#create-migration)
   - [run migrations](#run-migrations)
   - [revert migrations](#revert-migrations)
+    - [caso 3 --SOLUCIONADO](#caso-3----solucionado)
 
 # Nest
 
@@ -255,17 +256,40 @@ npm run migration:revert-dev
 
 PREGUNTAS PARA TRATAR
 
-CODIGO QUE WORKED
-npm run typeorm migration:generate ./src/database/migrations/first -- -d ./src/config/typeorm.config.ts
-
 Casos:SOLUCIONADO: ERA QUE DEBIA DE OPER ./src/... ALANTE PARA UBICAR EL ARCHIVO typeorm.config.ts
 Cuando saco a la raiz del src el archivo typeorm.config.ts, entonces no me funciona la migracion
 
 caso 2
 cuando pongo forengin key no me funciona la migracion.
 
-caso 3
-con el comando pnpm no funciona el comando de las migraciones, solo con npm
+### caso 3 --SOLUCIONADO
+
+con el comando `pnpm` no funciona el comando de las migraciones, solo con `npm`
+
+CODIGO QUE WORKED `npm`
+`npm run typeorm migration:generate ./src/database/migrations/first -- -d ./src/config/typeorm.config.ts`
+
+Worked `PNPM` I delete `--`
+`pnpm run typeorm migration:generate ./src/database/migrations/prueba -d ./src/config/typeorm.config.ts`
+
+worked and being called "`npm run mig:gen --name=first`"
+`"mig:gen": "pnpm run typeorm migration:generate ./src/database/migrations/%npm_config_name%  -d ./src/config/typeorm.config.ts"`
+
+worked
+`pnpm run typeorm migration:generate ./src/database/migrations/%npm_config_name% -d ./src/config/typeorm.config.ts`
+
+en conclusion:
+si uso "`npm run mig:gen --name=first `"
+y en el package.json uso npm para ejecutar lo: "
+`"mig:gen": "npm run typeorm migration:generate ./src/database/migrations/%npm_config_name% -- -d ./src/config/typeorm.config.ts"` " debo de tener el `--`
+
+para usar pnpm debo de usar en cli sin parametro
+llamar asi: pnpm run mig:gen
+y tener en el package : `"mig:gen": "pnpm run typeorm migration:generate ./src/database/migrations/pn  -d ./src/config/typeorm.config.ts"`
+
+el pnpm no soporta variables `%npm_config_name%` y en la cli tampoco "`npm run mig:gen --name=first` " ===>"`npm run mig:gen` "
+
+Por lo cual como el projecto fue hecho con npm seguir usandolo con `npm`
 
 caso 4
 sabes que es eso?
