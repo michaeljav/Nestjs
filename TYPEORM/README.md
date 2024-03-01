@@ -258,7 +258,7 @@ PREGUNTAS PARA TRATAR
 CODIGO QUE WORKED
 npm run typeorm migration:generate ./src/database/migrations/first -- -d ./src/config/typeorm.config.ts
 
-Casos:
+Casos:SOLUCIONADO: ERA QUE DEBIA DE OPER ./src/... ALANTE PARA UBICAR EL ARCHIVO typeorm.config.ts
 Cuando saco a la raiz del src el archivo typeorm.config.ts, entonces no me funciona la migracion
 
 caso 2
