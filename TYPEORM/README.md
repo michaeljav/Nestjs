@@ -32,9 +32,11 @@
   - [Configuration](#configuration)
     - [Migrations typeorm](#migrations-typeorm)
   - [create migration](#create-migration)
+- [Las migracions solo funcionan bien con npm, no funcionan muy bien con pnpm, ni yarn](#las-migracions-solo-funcionan-bien-con-npm-no-funcionan-muy-bien-con-pnpm-ni-yarn)
   - [run migrations](#run-migrations)
   - [revert migrations](#revert-migrations)
-    - [caso 3 --SOLUCIONADO](#caso-3----solucionado)
+- [caso 2](#caso-2)
+  - [caso 3 --SOLUCIONADO](#caso-3---solucionado)
 
 # Nest
 
@@ -242,6 +244,8 @@ g:is generate
 npm run migration:generate --name=example_name
 ```
 
+# Las migracions solo funcionan bien con npm, no funcionan muy bien con pnpm, ni yarn
+
 ## run migrations
 
 ```bash
@@ -259,7 +263,8 @@ PREGUNTAS PARA TRATAR
 Casos:SOLUCIONADO: ERA QUE DEBIA DE OPER ./src/... ALANTE PARA UBICAR EL ARCHIVO typeorm.config.ts
 Cuando saco a la raiz del src el archivo typeorm.config.ts, entonces no me funciona la migracion
 
-caso 2
+# caso 2
+
 cuando pongo forengin key no me funciona la migracion.
 
 ### caso 3 --SOLUCIONADO
