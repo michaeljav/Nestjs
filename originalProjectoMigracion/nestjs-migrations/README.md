@@ -24,6 +24,12 @@ npm install
 npm run migration:generate --name=example_name
 ```
 
+nota: Creando la migracion ubicando el datasource dentro de una carpeta config funciono
+`"mig:gen": "cross-env NODE_ENV=development npm run typeorm migration:generate ./src/database/migrations/%npm_config_name% -- -d ./src/config/typeorm.config.ts",`
+
+y cuando estaba en la raiz de src tenia esta key:value
+`  "migration:run-dev": "cross-env NODE_ENV=development npm run typeorm migration:run -- -d typeorm.config.ts",`
+
 ## run migrations
 
 ```bash
