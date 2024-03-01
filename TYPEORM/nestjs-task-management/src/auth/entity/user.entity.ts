@@ -23,9 +23,10 @@ export class UserEntity {
   @Column()
   salt: string;
   //
-  // @OneToMany((type) => TaskEntity, (task) => task.user, { eager: true })
-  @OneToMany(() => TaskEntity, (task) => task.user, { eager: true })
-  tasks: TaskEntity[];
+  // // @OneToMany((type) => TaskEntity, (task) => task.user, { eager: true })
+  // @OneToMany(() => TaskEntity, (task) => task.user, { eager: true })
+  // @OneToMany(() => TaskEntity, (task) => task.userId)
+  // tasks: TaskEntity[];
 
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcrypt.hash(password, this.salt);

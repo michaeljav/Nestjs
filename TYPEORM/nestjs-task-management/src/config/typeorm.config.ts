@@ -15,9 +15,10 @@ export const dataSourceOptions: DataSourceOptions = {
   database: process.env.RDS_DB_NAME || dbConfig.database,
   // entities: [__dirname + '/../**/*.entity.ts'], //no working
   // entities: [`${__dirname}/**/*.entity{.ts,.js}`], //no working
-  entities: [`${__dirname}/../**/*.entity{.ts,.js}`], //yes
+  // entities: [`${__dirname}/../**/*.entity{.ts,.js}`], //yes
   // entities: [`src/**/entities/*.entity.{ts,js}`], //yes testing
   // entities: [`src/**/*.entity.{ts,js}`], //yes testing
+  entities: ['src/**/*.entity.ts'],
   //aternative
   // autoLoadEntities: true,
   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
@@ -32,6 +33,7 @@ export const dataSourceOptions: DataSourceOptions = {
   // migrations: ['src/**/migrations/*{.ts,.js}'],//testing
   // migrations: ['src/db/migrations/*.ts'],
   // migrationsRun: true,
+  migrations: ['src/database/migrations/*.ts'],
   // logging: true,
 };
 // console.log('michael ', [__dirname + '/../**/*.entity.ts'], [__dirname]);

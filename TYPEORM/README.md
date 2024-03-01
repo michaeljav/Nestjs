@@ -31,6 +31,9 @@
     - [Log levels](#log-levels)
   - [Configuration](#configuration)
     - [Migrations typeorm](#migrations-typeorm)
+  - [create migration](#create-migration)
+  - [run migrations](#run-migrations)
+  - [revert migrations](#revert-migrations)
 
 # Nest
 
@@ -232,20 +235,45 @@ g:is generate
 
 ### Migrations typeorm
 
-"mig:gen": "pnpm run typeorm -- migration:generate " //no lo estoy usando
+## create migration
 
-- in the TypeOrmModuleOptions : SET SYNCHRONIZE: FALSE
-- add key:value migrations:[join(__dirname,'../**/*.migrations/*{.ts,js}')]
-- ts-node : lo uso
-- "typeorm": "typeorm-ts-node-esm -d dis/migrations/typeorm.config.js",
-- "typeorm":"typeorm-ts-node-esm -d ./src/config/data.source.ts" //default no usado
-- "typeorm":"typeorm-ts-node-esm -d ./src/config/typeorm.config.ts" //used saber la car
-  - key:value
-  - the esm: para importacion por modul
-- "mig:gen":"pnpm run typeorm migration:generate ./src/migrations/$npm_config_name"
-  - el directorio donde se guardara la migreacion.
-- "mig:run":"pnpm run typeorm migration:run"
-- add to the entity the column to migrate for test
-- to run the migration
-  - pnpm run mig:gen --name=MyMigration
-- -"typeorm": "pnpm run build && typeorm-ts-node-esm -d dist/migrations/typeorm.config.js",
+```bash
+npm run migration:generate --name=example_name
+```
+
+## run migrations
+
+```bash
+npm run migration:run-dev
+```
+
+## revert migrations
+
+```bash
+npm run migration:revert-dev
+```
+
+PREGUNTAS PARA TRATAR
+
+CODIGO QUE WORKED
+npm run typeorm migration:generate ./src/database/migrations/first -- -d ./src/config/typeorm.config.ts
+
+Casos:
+Cuando saco a la raiz del src el archivo typeorm.config.ts, entonces no me funciona la migracion
+
+caso 2
+cuando pongo forengin key no me funciona la migracion.
+
+caso 3
+con el comando pnpm no funciona el comando de las migraciones, solo con npm
+
+caso 4
+sabes que es eso?
+"typeorm": "typeorm-ts-node-commonjs",
+typeorm-ts-node-esm
+
+nota: Creando la migracion ubicando el datasource dentro de una carpeta config funciono
+`"mig:gen": " npm run typeorm migration:generate ./src/database/migrations/%npm_config_name% -- -d ./src/config/typeorm.config.ts",`
+
+y cuando estaba en la raiz de src tenia esta key:value
+`  "migration:run-dev": " npm run typeorm migration:run -- -d typeorm.config.ts",`

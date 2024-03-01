@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -29,8 +30,9 @@ export class TaskEntity extends BaseEntity {
   // migrationtest: string;
 
   // @ManyToOne((type) => UserEntity, (user) => user.tasks, { eager: false })
-  @ManyToOne(() => UserEntity, (user) => user.tasks, { eager: false })
-  user: UserEntity;
+  // @ManyToOne(() => UserEntity, (user) => user.tasks, { eager: false })
+  // @ManyToOne(() => UserEntity, (user) => user.tasks)
+  // user: UserEntity;
 
   @Column()
   userId: number;

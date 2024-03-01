@@ -2,7 +2,7 @@ db:
   host: 'localhost'
   username: 'root'
   password: '12345678'
-  synchronize: true
+  synchronize: false
 
 jwt:
   secret: 'topSecret51'
