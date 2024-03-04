@@ -40,6 +40,5 @@ export class TaskEntity extends BaseEntity {
 
   // @OneToOne(() => UserEntity)
   @OneToOne(() => UserEntity, (user) => user.task)
-  // @JoinColumn({ name: 'user_Id' })
   user: UserEntity;
 }

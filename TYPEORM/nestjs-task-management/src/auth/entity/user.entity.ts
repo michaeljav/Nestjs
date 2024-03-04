@@ -37,7 +37,7 @@ export class UserEntity {
   //3.escribir la columna que tendra la referencia a la tabla task
   // @OneToOne(() => TaskEntity)
   @OneToOne(() => TaskEntity, (task) => task.user)
-  @JoinColumn({ name: 'task_Id' })
+  @JoinColumn({ name: 'task_Id', referencedColumnName: 'id' })
   task: TaskEntity;
 
   async validatePassword(password: string): Promise<boolean> {
