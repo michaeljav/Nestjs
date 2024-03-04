@@ -4,6 +4,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { TaskStatus } from '../task-status.enum';
@@ -34,6 +35,11 @@ export class TaskEntity extends BaseEntity {
   // @ManyToOne(() => UserEntity, (user) => user.tasks)
   // user: UserEntity;
 
-  @Column()
-  userId: number;
+  // @Column()
+  // userId: number;
+
+  // @OneToOne(() => UserEntity)
+  @OneToOne(() => UserEntity, (user) => user.task)
+  // @JoinColumn({ name: 'user_Id' })
+  user: UserEntity;
 }
