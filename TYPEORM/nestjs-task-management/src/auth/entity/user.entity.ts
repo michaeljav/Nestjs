@@ -31,6 +31,12 @@ export class UserEntity {
   // @OneToMany(() => TaskEntity, (task) => task.userId)
   // tasks: TaskEntity[];
 
+  //estoy haiendo referencia a la actual columna que esta en base de datos
+  //cuando le ponto el nombre igual
+  // @Column({})
+  @Column('int', { name: 'task_Id' })
+  taskId: number;
+
   //ONE TO ONE :
   //1.la entidad a la cual hago referencia "TaskEntity"
   //2. segundo parametro: en la tabla task buscar el campo user que pertenece a la tabla user "(task) => task.user""
