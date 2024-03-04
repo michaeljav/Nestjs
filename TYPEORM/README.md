@@ -20,6 +20,7 @@
     - [Providers](#providers-1)
     - [Service](#service)
   - [create service](#create-service)
+  - [Creating resource CRUD all](#creating-resource-crud--all)
   - [using uuid](#using-uuid)
   - [Pipes](#pipes)
     - [Validation Pipe](#validation-pipe)
@@ -166,6 +167,12 @@ g:is generate
 ## create service
 
 `nest g service tasks --no-spec`
+
+## Creating resource CRUD all
+
+-command not only generates all the NestJS building blocks (module, service, controller classes) but also an entity class, DTO classes as well as the testing (.spec) files
+
+`nest g resource users`
 
 ## using uuid
 
