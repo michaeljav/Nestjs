@@ -30,15 +30,14 @@ export class TaskEntity extends BaseEntity {
   // @Column()
   // migrationtest: string;
 
-  // @ManyToOne((type) => UserEntity, (user) => user.tasks, { eager: false })
-  // @ManyToOne(() => UserEntity, (user) => user.tasks, { eager: false })
-  // @ManyToOne(() => UserEntity, (user) => user.tasks)
+  // // @OneToOne(() => UserEntity)
+  // @OneToOne(() => UserEntity, (user) => user.task)
   // user: UserEntity;
 
-  // @Column()
-  // userId: number;
+  @Column('int', { name: 'user_id' })
+  userId: number;
 
-  // @OneToOne(() => UserEntity)
-  @OneToOne(() => UserEntity, (user) => user.task)
+  @ManyToOne(() => UserEntity, (user) => user.tasks)
+  @JoinColumn({ name: 'user_id' })
   user: UserEntity;
 }
