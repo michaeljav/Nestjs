@@ -1,0 +1,1 @@
+este es un projecto para probar la libraria dataui/crud typeorm y nest mysql
